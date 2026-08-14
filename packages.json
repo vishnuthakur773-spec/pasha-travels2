@@ -1,0 +1,11 @@
+{
+  "packages": [
+    { "city": "Bali, Indonesia", "duration": "6N/7D", "price": 28999, "img": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80", "isNew": false },
+    { "city": "Thailand", "duration": "3N/4D", "price": 15999, "img": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80", "isNew": true },
+    { "city": "Dubai, UAE", "duration": "5N/6D", "price": 22500, "img": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80", "isNew": false },
+    { "city": "Goa", "duration": "3N/4D", "price": 15000, "img": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&q=80", "isNew": true },
+    { "city": "Vietnam", "duration": "5N/6D", "price": 25500, "img": "https://images.unsplash.com/photo-1528127269322-539801943592?w=500&q=80", "isNew": true },
+    { "city": "Andaman", "duration": "4N/5D", "price": 22999, "img": "https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=500&q=80", "isNew": false },
+    { "city": "Switzerland", "duration": "7N/8D", "price": 129999, "img": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=500&q=80", "isNew": false }
+  ]
+}

@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded photos get stored if you upload a file directly instead
+# of pasting a photo link — Decap will commit them into this folder.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Everything below defines the two things you can edit at /admin:
+# Special Air Ticket Fares, and Holiday Packages. Adding a new collection
+# later (e.g. Offers) just means copying one of these blocks and adjusting
+# the field names/file path.
+collections:
+  - name: "special_fares"
+    label: "Special Air Ticket Fares"
+    files:
+      - name: "fares"
+        label: "Fares List"
+        file: "fares-data.json"
+        fields:
+          - label: "Fares"
+            name: "fares"
+            widget: "list"
+            summary: "{{route}} — ₹{{price}} ({{period}})"
+            fields:
+              - { label: "Route (e.g. Delhi → Dubai)", name: "route", widget: "string" }
+              - { label: "Price (numbers only, no ₹ or commas)", name: "price", widget: "number", value_type: "int" }
+              - label: "How Often This Fare Runs"
+                name: "period"
+                widget: "select"
+                options: ["Daily", "Weekly", "Monthly"]
+              - { label: "Flyer Photo", name: "img", widget: "image", allow_multiple: false }
+              - label: "Mark as \"New\""
+                name: "isNew"
+                widget: "boolean"
+                default: false
+
+  - name: "packages"
+    label: "Holiday Packages"
+    files:
+      - name: "packages"
+        label: "Packages List"
+        file: "packages.json"
+        fields:
+          - label: "Packages"
+            name: "packages"
+            widget: "list"
+            summary: "{{city}} — ₹{{price}} ({{duration}})"
+            fields:
+              - { label: "Destination (e.g. Bali, Indonesia)", name: "city", widget: "string" }
+              - { label: "Duration (e.g. 6N/7D)", name: "duration", widget: "string" }
+              - { label: "Price (numbers only, no ₹ or commas)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Package Photo", name: "img", widget: "image", allow_multiple: false }
+              - label: "Mark as \"New This Week\""
+                name: "isNew"
+                widget: "boolean"
+                default: false
