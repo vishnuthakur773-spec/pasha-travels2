@@ -1,1 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasha Travels — Think Travel, Think Us</title>
+<link rel="icon" href="logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="announce-bar">
+  🏛️ <b>25+ Years</b> of Trusted Travel & Immigration Service <span class="sep">|</span> Hoshiarpur, Punjab
+</div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="logo.jpeg" alt="Pasha Travels logo">
+      <div class="brand-text">
+        <div class="name">Pasha Travels</div>
+        <div class="tag">Think Travel, Think Us</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#search">Flights</a>
+      <a href="#packages">Holiday Packages<span class="nav-dot" id="packagesNavDot" style="display:none;"></span></a>
+      <a href="#offers">Offers</a>
+      <a href="special-fares.html">Special Fares<span class="nav-dot" id="faresNavDot" style="display:none;"></span></a>
+      <a href="#visas">Apply Visas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" id="navLoginBtn" href="#" onclick="openAdminLogin(); return false;">Log in</a>
+      <a class="btn btn-primary" href="#contact">Plan My Trip</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="slider" id="heroSlider">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide slide-stat">
+        <div class="slide-shade"></div>
+        <div class="slide-content">
+          <div class="slide-stat-num">25<span>+</span></div>
+          <h3>Years of Immigration Service</h3>
+          <p>Trusted in Hoshiarpur since day one</p>
+          <a href="#visas" class="slide-btn">Our Story</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1400&q=80')">
+        <div class="slide-shade"></div>
+        <div class="slide-content">
+          <div class="slide-eyebrow">Holiday Package</div>
+          <h3>Bali Getaway — 6N/7D</h3>
+          <p>Temples, rice terraces, and beach days — from ₹28,999</p>
+          <a href="#packages" class="slide-btn">View Package</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80')">
+        <div class="slide-shade"></div>
+        <div class="slide-content">
+          <div class="slide-eyebrow">FRRO Services</div>
+          <h3>FRRO Exit Permit & Visa Extension</h3>
+          <p>High-volume FRRO cases handled directly</p>
+          <a href="#visas" class="slide-btn">Get Help</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1400&q=80')">
+        <div class="slide-shade"></div>
+        <div class="slide-content">
+          <div class="slide-eyebrow">Legal Visa Help</div>
+          <h3>Apply With an Immigration Lawyer</h3>
+          <p>No more consultant needed — talk to a lawyer directly</p>
+          <a href="#visas" class="slide-btn">Talk to Lawyer</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1400&q=80')">
+        <div class="slide-shade"></div>
+        <div class="slide-content">
+          <div class="slide-eyebrow">Special Deal</div>
+          <h3>Thailand Special — 3N/4D</h3>
+          <p>Beaches, temples, and street food — from ₹15,999</p>
+          <a href="#packages" class="slide-btn">View Package</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=1400&q=80')">
+        <div class="slide-shade"></div>
+        <div class="slide-content">
+          <div class="slide-eyebrow">Complex Cases</div>
+          <h3>OCI, DS-260, Spouse Visa & More</h3>
+          <p>If it doesn't fit a checklist, bring it to us anyway</p>
+          <a href="#visas" class="slide-btn">Discuss My Case</a>
+        </div>
+      </div>
+    </div>
+    <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">‹</button>
+    <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">›</button>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="search-panel" id="search">
+      <div class="tabs" id="tabs">
+        <div class="tab active" data-tab="flights">✈️ Flights</div>
+        <div class="tab" data-tab="hotels">🏨 Hotels</div>
+        <div class="tab" data-tab="packages">🧳 Holiday Packages</div>
+      </div>
+      <div class="tab-panels">
+
+        <div class="tab-panel active" data-panel="flights">
+          <div class="trip-type">
+            <label><input type="radio" name="triptype" value="oneway" checked onchange="updateTripType(this)"> One Way</label>
+            <label><input type="radio" name="triptype" value="roundtrip" onchange="updateTripType(this)"> Round Trip</label>
+            <label><input type="radio" name="triptype" value="multicity" onchange="updateTripType(this)"> Multi-City</label>
+          </div>
+          <form class="fields" id="flightForm" onsubmit="return handleSearch(event,'flight')">
+            <div class="field autocomplete-field">
+              <label>From</label>
+              <input type="text" id="flightFrom" placeholder="Delhi, DEL, or Bombay" autocomplete="off" required>
+              <div class="airport-suggest" id="flightFromSuggest"></div>
+            </div>
+            <button type="button" class="swap-btn" onclick="swapFields(this)" title="Swap">⇄</button>
+            <div class="field autocomplete-field">
+              <label>To</label>
+              <input type="text" id="flightTo" placeholder="Goa, GOI, or Dubai" autocomplete="off" required>
+              <div class="airport-suggest" id="flightToSuggest"></div>
+            </div>
+            <div class="field"><label>Departure</label><input type="date" id="flightDepart" required></div>
+            <div class="field" id="returnDateField" style="display:none;"><label>Return</label><input type="date" id="flightReturn"></div>
+            <div class="field"><label>Travellers</label><select><option>1 Adult</option><option>2 Adults</option><option>Family (4)</option></select></div>
+            <button class="search-submit" type="submit">Search Flights</button>
+          </form>
+          <div class="multi-city-note" id="multiCityNote" style="display:none;">Multi-city search isn't available online yet — call or WhatsApp us and we'll build the full itinerary for you: <a href="tel:+919814145209">+91 98141 45209</a></div>
+          <div class="flight-results-layout" id="flightResultsLayout">
+            <div class="results-col" id="flightResults"></div>
+            <div class="contact-card" id="flightContactCard"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="hotels">
+          <!-- FUTURE HOTEL API: when you get access to a hotel API (or set
+               up Booking.com's affiliate widget), this form is where it
+               plugs in — same pattern as Flights: a serverless function
+               like flight-search.js, called from handleSearch() below,
+               returning results into a div here. Nothing structural needs
+               to change on the page itself. -->
+          <form class="fields" onsubmit="return handleSearch(event,'hotel')">
+            <div class="field"><label>City / Property</label><input type="text" placeholder="Manali, Himachal Pradesh" required></div>
+            <div class="field"><label>Check-in</label><input type="date" required></div>
+            <div class="field"><label>Check-out</label><input type="date" required></div>
+            <div class="field"><label>Rooms & Guests</label><select><option>1 Room, 2 Guests</option><option>2 Rooms, 4 Guests</option></select></div>
+            <button class="search-submit" type="submit">Search Hotels</button>
+          </form>
+        </div>
+
+        <div class="tab-panel" data-panel="packages">
+          <form class="fields" onsubmit="return handleSearch(event,'package')">
+            <div class="field"><label>Destination</label><input type="text" placeholder="Kerala Backwaters" required></div>
+            <div class="field"><label>Duration</label><select><option>3N/4D</option><option>5N/6D</option><option>7N/8D</option></select></div>
+            <div class="field"><label>Travel Month</label><input type="month" required></div>
+            <div class="field"><label>Travellers</label><select><option>2 Adults</option><option>Family (4)</option><option>Group (8+)</option></select></div>
+            <button class="search-submit" type="submit">Explore Packages</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="runway accent" style="margin:50px auto 0;"><span class="plane" style="left:0;">✈</span></div></div>
+
+<section id="packages" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dash"></span>Curated, Not Copy-Pasted</div>
+        <h2>Holiday packages worth<br>rearranging your calendar for</h2>
+      </div>
+    </div>
+    <!-- Cards below are generated automatically from the PACKAGES list near
+         the top of the <script> tag. To add/remove/update a weekly deal,
+         edit that list only — this container just renders whatever's there. -->
+    <div class="dest-grid" id="packagesGrid"></div>
+    <div class="contact-card" id="packageContactCard"></div>
+  </div>
+</section>
+
+
+<div class="wrap"><div class="runway" style="margin:0 auto;"></div></div>
+
+<section id="offers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dash"></span>Boarding Passes to Savings</div>
+        <h2>Live offers, ready to redeem</h2>
+      </div>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="stub"><div class="code mono">PASHA10</div><div class="from">Flat 10% off · Domestic Flights</div></div>
+        <div class="body">
+          <h3>Weekday Getaway Fare</h3>
+          <p>10% instant discount on domestic one-way flights booked Monday–Thursday.</p>
+          <div class="expiry">Valid till 31 Aug</div>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="stub"><div class="code mono">STAY500</div><div class="from">₹500 off · Hotel Bookings</div></div>
+        <div class="body">
+          <h3>Weekend Staycation Deal</h3>
+          <p>Flat ₹500 off on hotel bookings above ₹4,000 in select hill-station cities.</p>
+          <div class="expiry">Valid till 15 Sep</div>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="stub"><div class="code mono">FAMILY4</div><div class="from">Free upgrade · Packages</div></div>
+        <div class="body">
+          <h3>Family Package Bonus</h3>
+          <p>Book a 4-person holiday package and get a free room upgrade at partner resorts.</p>
+          <div class="expiry">Valid till 30 Sep</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="airfares">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dash"></span>Updated Daily / Weekly / Monthly</div>
+        <h2>Special air ticket fares</h2>
+        <p>New fares posted all the time — see the full board and grab one before it's gone.</p>
+      </div>
+    </div>
+    <a class="fares-ticker-wrap" href="special-fares.html" aria-label="View all special air ticket fares">
+      <div class="fares-ticker" id="faresTicker"></div>
+    </a>
+    <div class="fares-ticker-cta">
+      <a href="special-fares.html" class="btn btn-primary">See All Special Fares →</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="visa-section" id="visas">
+    <div class="wrap">
+      <div class="visa-grid">
+        <div>
+          <div class="visa-eyebrow"><span class="dash"></span>New: Legal Visa Help</div>
+          <h2>Apply for your visa with an <em>immigration lawyer</em> — no more consultant needed.</h2>
+          <p class="lede">Skip the middleman agents and unclear "consultants." Whether it's Canada PR, Australia PR, a tourist visa, or getting your IELTS band up first — describe your case once, directly to a qualified immigration lawyer, and get an honest read on your options before you spend a rupee on fees.</p>
+          <div class="visa-badges">
+            <div class="visa-badge">⚖️ Licensed immigration lawyer</div>
+            <div class="visa-badge">🔒 Confidential case review</div>
+            <div class="visa-badge">📵 No consultant middlemen</div>
+            <div class="visa-badge">🏛️ 25 years serving Hoshiarpur</div>
+          </div>
+          <div class="visa-types">
+            <div class="visa-type-card"><div class="ico">🧳</div><h4>Tourist / Visit</h4><p>Short-stay & family visit visas</p></div>
+            <div class="visa-type-card"><div class="ico">🍁</div><h4>Canada PR</h4><p>Permanent residency applications & appeals</p></div>
+            <div class="visa-type-card"><div class="ico">🦘</div><h4>Australia PR</h4><p>Permanent residency applications & appeals</p></div>
+            <div class="visa-type-card"><div class="ico">📝</div><h4>IELTS Coaching</h4><p>Get your IELTS band with Pasha Travels</p></div>
+          </div>
+        </div>
+        <div class="visa-lawyer-card">
+          <div class="avatar">⚖️</div>
+          <h3>Talk to our Immigration Lawyer</h3>
+          <p>Tell us what's going on with your case — a rejection, a confusing document, or just "where do I even start." A real lawyer reviews it, not a call-centre script.</p>
+          <ul>
+            <li>Straight answers on whether your case is even viable</li>
+            <li>No pressure to sign up for a paid package first</li>
+            <li>Response usually within 24–48 hours</li>
+          </ul>
+          <button class="visa-cta-btn" onclick="openVisaModal()">Describe Your Case</button>
+          <div class="visa-cta-note">Free first review · Sent directly, not through a call centre</div>
+          <div class="visa-cta-note" style="margin-top:10px;">Prefer to call or email directly?<br>📞 <a href="tel:+919646545209">+91 96465 45209</a> &nbsp;·&nbsp; ✉️ <a href="mailto:advocatevishnu28@gmail.com">advocatevishnu28@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="complex-cases">
+        <div class="complex-head">
+          <div class="visa-eyebrow"><span class="dash"></span>Beyond Standard Visas</div>
+          <h3>Other complex immigration cases we handle</h3>
+          <p>Most agents stop at filling forms. If your case has a rejection behind it, a document mismatch, or just doesn't fit a standard checklist — this is exactly the kind of thing we deal with directly, case by case.</p>
+        </div>
+        <div class="complex-grid">
+          <div class="complex-card">
+            <div class="ico">🪪</div>
+            <h4>OCI Card</h4>
+            <p>New OCI applications, renewals, and corrections — including delayed or rejected cases.</p>
+          </div>
+          <div class="complex-card featured">
+            <div class="featured-ribbon">Most Requested</div>
+            <div class="ico">📋</div>
+            <h4>FRRO Exit Permit</h4>
+            <p>Exit permission cases for long-stay visas, overstays, and documentation mismatches. We handle a high volume of these.</p>
+          </div>
+          <div class="complex-card">
+            <div class="ico">⏳</div>
+            <h4>Visa Extension</h4>
+            <p>Extensions for visitor, medical, business, and student visas — including cases close to or past expiry.</p>
+          </div>
+          <div class="complex-card">
+            <div class="ico">🇺🇸</div>
+            <h4>DS-260 Processing</h4>
+            <p>US immigrant visa applications (National Visa Center stage) — form review, documentation, and interview prep.</p>
+          </div>
+          <div class="complex-card">
+            <div class="ico">💍</div>
+            <h4>Spouse Visa Cases</h4>
+            <p>Marriage-based visa and immigration petitions, including cases with prior refusals or complicated documentation.</p>
+          </div>
+          <div class="complex-card">
+            <div class="ico">⚖️</div>
+            <h4>Other Complex Cases</h4>
+            <p>Rejected applications, appeals, unusual documentation issues — if it doesn't fit a neat category, bring it to us anyway.</p>
+          </div>
+        </div>
+        <div class="complex-cta">
+          <p>Not sure which of these fits your situation? That's fine — describe what's actually going on and let the lawyer sort out the category.</p>
+          <button class="visa-cta-btn" style="width:auto; padding:14px 28px;" onclick="openVisaModal()">Discuss My Case</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap"><div class="runway accent" style="margin:0 auto;"><span class="plane" style="left:30%;">✈</span></div></div>
+
+<div class="wrap">
+  <section class="why">
+    <div class="wrap">
+      <div class="why-grid">
+        <div class="why-item"><div class="num">01</div><h3>Real people, real help</h3><p>A human travel desk you can actually call, not just a chatbot loop.</p></div>
+        <div class="why-item"><div class="num">02</div><h3>No hidden convenience fees</h3><p>The price you see at search is the price you pay at checkout.</p></div>
+        <div class="why-item"><div class="num">03</div><h3>Free cancellation windows</h3><p>Most flights and hotels come with a no-questions 24-hour cancellation buffer.</p></div>
+        <div class="why-item"><div class="num">04</div><h3>Itineraries, not just tickets</h3><p>Every package includes a day-by-day plan, not a bare voucher.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span class="dash"></span>From Our Travellers</div>
+        <h2>Trips they'd book again</h2>
+      </div>
+    </div>
+    <!-- Populated and rotated automatically from the REVIEWS list near the
+         top of the <script> tag. Add/edit reviews there, not here. -->
+    <div class="quote-strip" id="quoteStrip"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Get fare drops and package deals before they go public.</h2>
+      <form class="cta-form" onsubmit="return handleSubscribe(event)">
+        <input type="email" placeholder="you@email.com" required>
+        <button class="btn btn-primary" type="submit">Notify Me</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="logo.jpeg" alt="Pasha Travels logo">
+          <div class="name">Pasha Travels</div>
+        </div>
+        <p style="font-size:14px; line-height:1.6; max-width:280px;">Think Travel, Think Us. A travel desk for people who'd rather be at the gate than in a spreadsheet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#search">Flights</a></li>
+          <li><a href="#packages">Holiday Packages</a></li>
+          <li><a href="#offers">Offers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="return notifyGeneric()">About Us</a></li>
+          <li><a href="#" onclick="return notifyGeneric()">Careers</a></li>
+          <li><a href="#" onclick="return notifyGeneric()">Terms & Conditions</a></li>
+          <li><a href="#" onclick="return notifyGeneric()">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Flights & Packages</h4>
+        <ul>
+          <li><a href="tel:+919814145209">+91 98141 45209</a></li>
+          <li><a href="tel:+919988081517">+91 99880 81517</a></li>
+          <li><a href="tel:+919646545209">+91 96465 45209</a></li>
+          <li><a href="mailto:pasha.travels@gmail.com">pasha.travels@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visa & Immigration</h4>
+        <ul>
+          <li><a href="tel:+919646545209">+91 96465 45209</a></li>
+          <li><a href="mailto:advocatevishnu28@gmail.com">advocatevishnu28@gmail.com</a></li>
+          <li style="color:#8a847a; font-size:12.5px; margin-top:2px;">25 years in immigration services</li>
+        </ul>
+      </div>
+    </div>
+    <div style="padding:22px 0; border-top:1px solid rgba(255,255,255,0.12); font-size:13.5px; color:#c9c2b6; line-height:1.6;">
+      <strong style="color:#fff;">Pasha Travels</strong> — DC Road, Opposite Bhagat Singh Statue & Central Jail, Hoshiarpur – 146001, Punjab
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Pasha Travels. All rights reserved.</div>
+      <div>This is a demo storefront — bookings shown here are not real transactions.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="visaModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVisaModal()">✕</button>
+    <h3>Describe your visa case</h3>
+    <div class="sub">This goes straight to Pasha Travels' immigration desk — no consultant in between.</div>
+
+    <form id="visaForm" name="visa-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return submitVisaForm(event)">
+      <input type="hidden" name="form-name" value="visa-enquiry">
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" name="name" id="visaName" placeholder="Full name" required>
+      </div>
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" id="visaPhone" placeholder="+91 98XXX XXXXX" required>
+      </div>
+      <div class="field">
+        <label>Visa Type</label>
+        <select name="visaType" id="visaType">
+          <option>Tourist / Visit Visa</option>
+          <option>Canada PR</option>
+          <option>Australia PR</option>
+          <option>IELTS Coaching</option>
+          <option>OCI Card</option>
+          <option>FRRO Exit Permit</option>
+          <option>Visa Extension</option>
+          <option>DS-260 (US Immigrant Visa)</option>
+          <option>Spouse Visa</option>
+          <option>Other Complex Case</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Describe Your Issue</label>
+        <textarea name="message" id="visaMessage" placeholder="E.g. My student visa was rejected once before, applying again for Canada, not sure what documents I'm missing..." required></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" type="submit" style="width:100%; padding:14px;">Send to Pasha Travels</button>
+        <button type="button" class="btn-whatsapp" onclick="sendViaWhatsApp()">💬 Send via WhatsApp Instead</button>
+      </div>
+      <div class="modal-privacy">Your details go directly to our team for a case review — never shared with third-party agents.</div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastMsg"></span></div>
+
+<button class="share-fab" onclick="shareSite()" aria-label="Share this website" title="Share Pasha Travels">🔗</button>
+
+<button class="admin-fab" id="adminFab" onclick="openAdminPanel()" style="display:none;" title="Open admin panel">⚙️ Admin</button>
+
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-panel">
+    <div class="admin-panel-head">
+      <div class="admin-panel-title">Site Admin — Packages & Fares</div>
+      <button class="admin-close" onclick="closeAdminPanel()" aria-label="Close">✕</button>
+    </div>
+    <div class="admin-panel-body" id="adminPanelBody">
+      <div class="admin-loading">Loading…</div>
+    </div>
+    <div class="admin-panel-foot">
+      <button class="admin-save-btn" id="adminSaveBtn" onclick="saveAdminChanges()">Save & Publish</button>
+    </div>
+  </div>
+</div>
+
+<div class="new-offer-card" id="newOfferCard">
+  <button class="new-offer-close" onclick="dismissNewOffer()" aria-label="Dismiss">✕</button>
+  <div class="new-offer-label">🔥 New</div>
+  <div class="new-offer-title" id="newOfferTitle"></div>
+  <div class="new-offer-sub" id="newOfferSub"></div>
+  <a href="#" class="new-offer-link" id="newOfferLink" onclick="sessionStorage.setItem('pasha_seen_new_offer','1')">View Offer →</a>
+</div>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  // ── IN-SITE ADMIN PANEL ──────────────────────────────────────────────
+  // No more separate /admin page. Log in right here, edit right here.
+  // This talks directly to GitHub in the background through Netlify's
+  // Git Gateway (the same secure connection Decap CMS used) — you never
+  // see GitHub, never leave this site.
+  //
+  // If you ever change which GitHub repo this site deploys from, update
+  // ADMIN_REPO below to match (format: "your-username/your-repo-name").
+  const ADMIN_REPO = 'vishnuthakur773-spec/pasha-travels2';
+  const ADMIN_BRANCH = 'main';
+  const GATEWAY_API = '/.netlify/git/github/repos/' + ADMIN_REPO + '/contents/';
+
+  let currentAdminUser = null;
+  let editingPackages = [];
+  let editingFares = [];
+  let packagesSha = null;
+  let faresSha = null;
+  let adminTab = 'packages';
+
+  function utf8ToBase64(str){ return btoa(unescape(encodeURIComponent(str))); }
+  function base64ToUtf8(str){ return decodeURIComponent(escape(atob(str))); }
+
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      currentAdminUser = user;
+      updateAdminNav();
+    });
+    window.netlifyIdentity.on("login", user => {
+      currentAdminUser = user;
+      window.netlifyIdentity.close();
+      updateAdminNav();
+      openAdminPanel();
+    });
+    window.netlifyIdentity.on("logout", () => {
+      currentAdminUser = null;
+      updateAdminNav();
+      closeAdminPanel();
+    });
+  }
+
+  function openAdminLogin(){
+    if(currentAdminUser){ openAdminPanel(); return; }
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.open("login");
+    } else {
+      showToast("Login isn't ready yet — please refresh the page and try again.");
+    }
+  }
+
+  function updateAdminNav(){
+    const loginBtn = document.getElementById('navLoginBtn');
+    const adminFab = document.getElementById('adminFab');
+    if(!loginBtn) return;
+    if(currentAdminUser){
+      loginBtn.textContent = 'Log out';
+      loginBtn.onclick = (e) => { e.preventDefault(); window.netlifyIdentity.logout(); };
+      if(adminFab) adminFab.style.display = 'flex';
+    } else {
+      loginBtn.textContent = 'Log in';
+      loginBtn.onclick = (e) => { e.preventDefault(); openAdminLogin(); };
+      if(adminFab) adminFab.style.display = 'none';
+    }
+  }
+
+  async function gatewayGetFile(path){
+    const token = await currentAdminUser.jwt();
+    const res = await fetch(GATEWAY_API + path + '?ref=' + ADMIN_BRANCH, {
+      headers: { Authorization: 'Bearer ' + token },
+    });
+    if(!res.ok) throw new Error('Could not load ' + path + ' (status ' + res.status + ')');
+    const data = await res.json();
+    return { content: JSON.parse(base64ToUtf8(data.content)), sha: data.sha };
+  }
+
+  async function gatewayPutFile(path, jsonObj, sha, message){
+    const token = await currentAdminUser.jwt();
+    const res = await fetch(GATEWAY_API + path, {
+      method: 'PUT',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: message,
+        content: utf8ToBase64(JSON.stringify(jsonObj, null, 2)),
+        sha: sha,
+        branch: ADMIN_BRANCH,
+      }),
+    });
+    if(!res.ok) throw new Error('Save failed (status ' + res.status + ')');
+    return res.json();
+  }
+
+  async function openAdminPanel(){
+    document.getElementById('adminOverlay').classList.add('show');
+    document.getElementById('adminPanelBody').innerHTML = '<div class="admin-loading">Loading your packages and fares…</div>';
+    try{
+      const [pkgFile, fareFile] = await Promise.all([
+        gatewayGetFile('packages.json'),
+        gatewayGetFile('fares-data.json'),
+      ]);
+      editingPackages = pkgFile.content.packages || [];
+      packagesSha = pkgFile.sha;
+      editingFares = fareFile.content.fares || [];
+      faresSha = fareFile.sha;
+      renderAdminPanel();
+    } catch(err){
+      document.getElementById('adminPanelBody').innerHTML =
+        '<div class="admin-loading">Couldn\'t load your data: ' + err.message + '. Try closing and reopening this panel.</div>';
+    }
+  }
+
+  function closeAdminPanel(){
+    document.getElementById('adminOverlay').classList.remove('show');
+  }
+
+  function switchAdminTab(tab){
+    adminTab = tab;
+    renderAdminPanel();
+  }
+
+  // Builds the photo section for one row: a URL field (for pasting a link),
+  // an upload button (for picking a photo straight from your device), a
+  // status message, and a live preview — shared by packages and fares.
+  function photoFieldHtml(type, i, imgValue){
+    const safeVal = (imgValue || '').replace(/"/g,'&quot;');
+    const previewHtml = imgValue
+      ? `<img src="${safeVal}" class="admin-img-preview" onerror="this.style.display='none'">`
+      : '';
+    return `
+      <div class="admin-photo-block">
+        <div class="admin-item-row">
+          <input type="text" placeholder="Photo URL (or upload below)" value="${safeVal}"
+            oninput="${type==='pkg' ? `editingPackages[${i}].img=this.value` : `editingFares[${i}].img=this.value`}; renderAdminPhotoPreview('${type}',${i},this.value)">
+          <label class="admin-upload-btn">
+            📁 Upload Photo
+            <input type="file" accept="image/*" style="display:none"
+              onchange="handleImageUpload(this,'${type}',${i})">
+          </label>
+        </div>
+        <div class="admin-upload-status" id="${type}UploadStatus-${i}"></div>
+        <div id="${type}PreviewWrap-${i}">${previewHtml}</div>
+      </div>
+    `;
+  }
+
+  function renderAdminPhotoPreview(type, i, url){
+    const wrap = document.getElementById(type + 'PreviewWrap-' + i);
+    if(!wrap) return;
+    wrap.innerHTML = url ? `<img src="${url}" class="admin-img-preview" onerror="this.style.display='none'">` : '';
+  }
+
+  // Shrinks any photo down to a safe size (max 1200px wide, compressed JPEG)
+  // before it ever gets uploaded — this is what prevents the "won't upload"
+  // problem: GitHub rejects files over ~1MB, and phone photos are almost
+  // always bigger than that straight out of the camera. This keeps uploads
+  // comfortably under that limit no matter what photo is picked.
+  function compressImageFile(file, maxWidth, quality){
+    maxWidth = maxWidth || 1200;
+    quality = quality || 0.82;
+    return new Promise((resolve, reject) => {
+      if(!file.type || !file.type.startsWith('image/')){
+        reject(new Error('That file isn\'t a photo — please choose a JPG or PNG image.'));
+        return;
+      }
+      if(file.size > 20 * 1024 * 1024){
+        reject(new Error('That photo is too large to process (over 20MB) — please choose a smaller one.'));
+        return;
+      }
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Could not read that file — please try again.'));
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Could not open that image — try a different photo.'));
+        img.onload = () => {
+          let width = img.width, height = img.height;
+          if(width > maxWidth){
+            height = Math.round(height * (maxWidth / width));
+            width = maxWidth;
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL('image/jpeg', quality);
+          resolve(dataUrl.split(',')[1]);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function uploadImageToRepo(base64Data, originalName){
+    const safeName = (originalName || 'photo').toLowerCase().replace(/\.[^.]+$/, '').replace(/[^a-z0-9-]/g, '-');
+    const filename = Date.now() + '-' + safeName + '.jpg';
+    const path = 'images/uploads/' + filename;
+    const token = await currentAdminUser.jwt();
+    const res = await fetch(GATEWAY_API + path, {
+      method: 'PUT',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: 'Upload photo via site admin panel',
+        content: base64Data,
+        branch: ADMIN_BRANCH,
+      }),
+    });
+    if(!res.ok){
+      const hint = res.status === 413 ? ' The photo is still too large even after compression — please try a simpler photo.' : '';
+      throw new Error('Upload failed (status ' + res.status + ').' + hint);
+    }
+    return '/' + path;
+  }
+
+  async function handleImageUpload(inputEl, type, i){
+    const file = inputEl.files[0];
+    if(!file) return;
+    const statusEl = document.getElementById(type + 'UploadStatus-' + i);
+    statusEl.textContent = 'Compressing & uploading…';
+    statusEl.className = 'admin-upload-status uploading';
+    try{
+      const base64 = await compressImageFile(file);
+      const path = await uploadImageToRepo(base64, file.name);
+      if(type === 'pkg'){ editingPackages[i].img = path; }
+      else { editingFares[i].img = path; }
+      statusEl.textContent = '✓ Uploaded';
+      statusEl.className = 'admin-upload-status success';
+      renderAdminPhotoPreview(type, i, path);
+      const urlInput = statusEl.closest('.admin-photo-block').querySelector('input[type="text"]');
+      if(urlInput) urlInput.value = path;
+    } catch(err){
+      statusEl.textContent = '✗ ' + err.message;
+      statusEl.className = 'admin-upload-status error';
+    }
+  }
+
+  function renderAdminPanel(){
+    const body = document.getElementById('adminPanelBody');
+    const isPkg = adminTab === 'packages';
+    const list = isPkg ? editingPackages : editingFares;
+
+    const tabsHtml = `
+      <div class="admin-tabs">
+        <button class="${isPkg ? 'active' : ''}" onclick="switchAdminTab('packages')">🧳 Holiday Packages</button>
+        <button class="${!isPkg ? 'active' : ''}" onclick="switchAdminTab('fares')">🎫 Special Fares</button>
+      </div>`;
+
+    const itemsHtml = list.map((item, i) => isPkg ? `
+      <div class="admin-item">
+        <div class="admin-item-row">
+          <input type="text" placeholder="Destination (e.g. Bali, Indonesia)" value="${(item.city||'').replace(/"/g,'&quot;')}" oninput="editingPackages[${i}].city=this.value">
+          <input type="text" placeholder="Duration (e.g. 6N/7D)" value="${(item.duration||'').replace(/"/g,'&quot;')}" oninput="editingPackages[${i}].duration=this.value">
+        </div>
+        <div class="admin-item-row">
+          <input type="number" placeholder="Price" value="${item.price||''}" oninput="editingPackages[${i}].price=Number(this.value)">
+        </div>
+        ${photoFieldHtml('pkg', i, item.img)}
+        <div class="admin-item-row admin-item-row-end">
+          <label class="admin-checkbox"><input type="checkbox" ${item.isNew?'checked':''} onchange="editingPackages[${i}].isNew=this.checked"> Mark "New This Week"</label>
+          <button class="admin-delete" onclick="editingPackages.splice(${i},1); renderAdminPanel();">🗑 Remove</button>
+        </div>
+      </div>
+    ` : `
+      <div class="admin-item">
+        <div class="admin-item-row">
+          <input type="text" placeholder="Route (e.g. Delhi → Dubai)" value="${(item.route||'').replace(/"/g,'&quot;')}" oninput="editingFares[${i}].route=this.value">
+          <select onchange="editingFares[${i}].period=this.value">
+            <option value="Daily" ${item.period==='Daily'?'selected':''}>Daily</option>
+            <option value="Weekly" ${item.period==='Weekly'?'selected':''}>Weekly</option>
+            <option value="Monthly" ${item.period==='Monthly'?'selected':''}>Monthly</option>
+          </select>
+        </div>
+        <div class="admin-item-row">
+          <input type="number" placeholder="Price" value="${item.price||''}" oninput="editingFares[${i}].price=Number(this.value)">
+        </div>
+        ${photoFieldHtml('fare', i, item.img)}
+        <div class="admin-item-row admin-item-row-end">
+          <label class="admin-checkbox"><input type="checkbox" ${item.isNew?'checked':''} onchange="editingFares[${i}].isNew=this.checked"> Mark "New"</label>
+          <button class="admin-delete" onclick="editingFares.splice(${i},1); renderAdminPanel();">🗑 Remove</button>
+        </div>
+      </div>
+    `).join('');
+
+    const addBtnHtml = isPkg
+      ? `<button class="admin-add-btn" onclick="editingPackages.push({city:'',duration:'',price:0,img:'',isNew:true}); renderAdminPanel();">+ Add Package</button>`
+      : `<button class="admin-add-btn" onclick="editingFares.push({route:'',period:'Daily',price:0,img:'',isNew:true}); renderAdminPanel();">+ Add Fare</button>`;
+
+    body.innerHTML = tabsHtml + '<div class="admin-list">' + itemsHtml + '</div>' + addBtnHtml;
+  }
+
+  async function saveAdminChanges(){
+    const saveBtn = document.getElementById('adminSaveBtn');
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+    try{
+      const pkgResult = await gatewayPutFile('packages.json', { packages: editingPackages }, packagesSha, 'Update Holiday Packages via site admin panel');
+      packagesSha = pkgResult.content.sha;
+      const fareResult = await gatewayPutFile('fares-data.json', { fares: editingFares }, faresSha, 'Update Special Air Ticket Fares via site admin panel');
+      faresSha = fareResult.content.sha;
+      showToast('Saved! Your site will update within about a minute.');
+    } catch(err){
+      showToast('Save failed: ' + err.message + '. Please try again.');
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save & Publish';
+    }
+  }
+  // ──────────────────────────────────────────────────────────────────
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector('.tab-panel[data-panel="'+tab.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  function swapFields(btn){
+    const fields = btn.parentElement.querySelectorAll('.field input[type="text"]');
+    if(fields.length===2){
+      const tmpVal = fields[0].value; fields[0].value = fields[1].value; fields[1].value = tmpVal;
+      const tmpCode = fields[0].dataset.code; fields[0].dataset.code = fields[1].dataset.code || ''; fields[1].dataset.code = tmpCode || '';
+    }
+  }
+
+  function updateTripType(radio){
+    const value = radio.value;
+    const returnField = document.getElementById('returnDateField');
+    const returnInput = document.getElementById('flightReturn');
+    const note = document.getElementById('multiCityNote');
+    const submitBtn = document.querySelector('#flightForm .search-submit');
+
+    returnField.style.display = value === 'roundtrip' ? '' : 'none';
+    returnInput.required = value === 'roundtrip';
+    if(value !== 'roundtrip') returnInput.value = '';
+
+    note.style.display = value === 'multicity' ? 'block' : 'none';
+    submitBtn.style.display = value === 'multicity' ? 'none' : '';
+  }
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(()=>t.classList.remove('show'), 3200);
+  }
+
+  // Builds the "Special & Live Fares" contact card shown next to flight
+  // results and when someone tries to book a package — same three numbers
+  // used everywhere else on the site.
+  function contactCardHTML(subtext){
+    const numbers = ['919814145209', '919988081517', '919646545209'];
+    const displayNums = ['+91 98141 45209', '+91 99880 81517', '+91 96465 45209'];
+    const waText = encodeURIComponent('Hi Pasha Travels, I\'d like to ask about live special ticket fares.');
+    const rows = numbers.map((n, i) => `
+      <div class="contact-row">
+        <span class="num">${displayNums[i]}</span>
+        <div class="mini-btns">
+          <a class="mini-btn call" href="tel:+${n}" title="Call">📞</a>
+          <a class="mini-btn wa" href="https://wa.me/${n}?text=${waText}" target="_blank" title="WhatsApp">💬</a>
+        </div>
+      </div>
+    `).join('');
+    return `
+      <div class="contact-card-heading">📢 Special & Live Fares</div>
+      <div class="contact-card-sub">${subtext}</div>
+      ${rows}
+    `;
+  }
+
+  async function shareSite(){
+    const shareData = {
+      title: 'Pasha Travels',
+      text: 'Flights, holiday packages, and visa/immigration services with Pasha Travels — check them out:',
+      url: window.location.href,
+    };
+    // On phones/tablets this opens the native share sheet — WhatsApp, Messages,
+    // Email, etc. all show up automatically, no extra code needed here.
+    if(navigator.share){
+      try{
+        await navigator.share(shareData);
+      } catch(err){
+        // User closed the share sheet without picking anything — do nothing.
+      }
+      return;
+    }
+    // Desktop browsers usually don't have navigator.share — copy the link instead.
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{
+        await navigator.clipboard.writeText(shareData.url);
+        showToast('Link copied! Paste it anywhere to share Pasha Travels.');
+        return;
+      } catch(err){
+        // Clipboard permission blocked — fall through to the manual message below.
+      }
+    }
+    showToast('Copy the link from your browser\'s address bar to share this page.');
+  }
+
+  // ===== Hero slider =====
+  let currentSlide = 0;
+  let slideTimer = null;
+  const track = document.getElementById('sliderTrack');
+  const totalSlides = track ? track.children.length : 0;
+  const dotsContainer = document.getElementById('sliderDots');
+
+  function buildDots(){
+    if(!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+    for(let i=0; i<totalSlides; i++){
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateSlider(){
+    if(!track) return;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.slider-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function goToSlide(i){
+    currentSlide = i;
+    updateSlider();
+    resetTimer();
+  }
+
+  function moveSlide(dir){
+    currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+    updateSlider();
+    resetTimer();
+  }
+
+  function resetTimer(){
+    clearInterval(slideTimer);
+    slideTimer = setInterval(() => moveSlide(1), 2800);
+  }
+
+  if(track && totalSlides > 0){
+    buildDots();
+    resetTimer();
+    const sliderEl = document.getElementById('heroSlider');
+    sliderEl.addEventListener('mouseenter', () => clearInterval(slideTimer));
+    sliderEl.addEventListener('mouseleave', resetTimer);
+  }
+
+  // ── EASY-EDIT CONFIG ──────────────────────────────────────────────
+  // Change any of these values any time; nothing else in the code needs to change.
+  const OWNER_WHATSAPP_NUMBER = '919646545209'; // Visa desk WhatsApp, country code + digits only
+  const TRAVEL_WHATSAPP_NUMBER = '919814145209'; // Flights & Packages desk WhatsApp
+  const TRAVEL_PHONE_DISPLAY = '+91 98141 45209'; // Shown on the "Call to Book" button
+  // ──────────────────────────────────────────────────────────────────
+
+  // ── WEEKLY DEALS: HOLIDAY PACKAGES ──────────────────────────────────
+  // This is the ONLY thing you need to touch to add, remove, or change a
+  // holiday package deal. Each line is one card on the site.
+  //   city:     shown as the card title, e.g. "Dubai, UAE"
+  //   duration: e.g. "5N/6D" (5 nights / 6 days)
+  //   price:    number only, no commas or ₹ symbol, e.g. 42999
+  //   img:      a LIST of photo URLs — the card rotates through all of
+  //             them automatically every 2 seconds. Use just one URL in
+  //             the list if you don't want rotation for that card.
+  //             (Unsplash: find a photo -> right-click -> Copy Image Address)
+  //   isNew:    true shows a "New This Week" ribbon on the card; set back to
+  //             false (or delete the line) once it's not new anymore
+  //
+  // To add a package: copy one whole { ... }, line, paste it, edit the values.
+  // To remove one: delete its whole { ... }, line.
+  // Order here is the order they appear on the site, left to right.
+  // ── WEEKLY DEALS: HOLIDAY PACKAGES ──────────────────────────────────
+  // The actual package list now lives in packages.json — edit it there
+  // (directly, or via the /admin login panel) instead of here. This just
+  // fetches it and renders whatever's in it.
+  let PACKAGES = [];
+  fetch('packages.json?t=' + Date.now())
+    .then(res => res.json())
+    .then(data => { PACKAGES = data.packages || []; renderPackages(); checkForNewOffers(); })
+    .catch(() => { /* If this fails, the packages section just stays empty. */ });
+
+  // ── CUSTOMER REVIEWS: auto-rotating, mixed across Visa/Flights/Packages ──
+  // Add, edit, or remove reviews here any time — the carousel rebuilds
+  // itself from whatever's in this list. `tag` is the little category
+  // label shown above each quote (Visa, Flights, Packages, etc).
+  const REVIEWS = [
+    { stars: 5, tag: 'Packages', text: 'Booked our Kerala package in a day. The itinerary was more detailed than what our old agent used to send us.', name: 'Ritu Malhotra', place: 'Chandigarh' },
+    { stars: 5, tag: 'Flights', text: 'Flight got rescheduled and someone actually called me to sort it out before I even noticed the change.', name: 'Arjun Deshmukh', place: 'Pune' },
+    { stars: 4, tag: 'Packages', text: 'Good hotel rates in Manali during peak season, when everywhere else was sold out or overpriced.', name: 'Simran Kaur', place: 'Patiala' },
+    { stars: 5, tag: 'Visa', text: 'FRRO exit permit was sorted in days. I\'d been stuck on it myself for weeks with no answer from anyone.', name: 'Harpreet Singh', place: 'Hoshiarpur' },
+    { stars: 5, tag: 'Visa', text: 'Straight answers on my Canada PR case — no upselling, just told me exactly what my file was missing.', name: 'Neha Sharma', place: 'Jalandhar' },
+    { stars: 5, tag: 'Flights', text: 'Called for a special fare on the Delhi-Dubai route and got a better price than three other agents combined.', name: 'Faisal Khan', place: 'Ludhiana' },
+    { stars: 4, tag: 'Packages', text: 'Thailand trip was smooth end to end — hotel, transfers, and a proper day-by-day plan, not just a voucher.', name: 'Priya Nair', place: 'Amritsar' },
+    { stars: 5, tag: 'Visa', text: 'My spouse visa case had a prior rejection. The lawyer actually read the old file before saying anything.', name: 'Gurpreet Kaur', place: 'Hoshiarpur' },
+    { stars: 5, tag: 'Visa', text: 'OCI renewal that I kept postponing out of confusion got done properly in one sitting.', name: 'Rajesh Verma', place: 'Chandigarh' },
+    { stars: 4, tag: 'Flights', text: 'Round trip fare to Bangkok came in cheaper than what I found online, and booking was one phone call.', name: 'Ananya Kapoor', place: 'Patiala' },
+    { stars: 5, tag: 'Packages', text: 'Bali package pricing was honest from the start — no hidden add-ons at checkout like other agents do.', name: 'Manpreet Singh', place: 'Jalandhar' },
+    { stars: 5, tag: 'Visa', text: 'IELTS guidance alongside the visa consultation saved me from booking two separate services elsewhere.', name: 'Simarjeet Kaur', place: 'Hoshiarpur' },
+  ];
+
+  function starString(n){
+    return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+  }
+
+  let reviewTick = 0;
+  function renderReviewSlice(){
+    const strip = document.getElementById('quoteStrip');
+    if(!strip) return;
+    // A day-based offset means the starting point looks different each day,
+    // on top of the continuous rotation while someone's on the page.
+    const dayOffset = Math.floor(Date.now() / 86400000) % REVIEWS.length;
+    const start = (dayOffset + reviewTick) % REVIEWS.length;
+    const picks = [0, 1, 2].map(i => REVIEWS[(start + i) % REVIEWS.length]);
+
+    strip.innerHTML = picks.map(r => `
+      <div class="quote-card">
+        <div class="tag">${r.tag}</div>
+        <div class="stars">${starString(r.stars)}</div>
+        <p>${r.text}</p>
+        <div class="who">${r.name} <span>${r.place}</span></div>
+      </div>
+    `).join('');
+    // Trigger the fade-in on the next frame so the CSS transition actually runs.
+    requestAnimationFrame(() => {
+      strip.querySelectorAll('.quote-card').forEach(c => c.classList.add('in'));
+    });
+
+    reviewTick++;
+  }
+  renderReviewSlice();
+  setInterval(renderReviewSlice, 3000);
+
+  // ── SMART DESTINATION PHOTOS ─────────────────────────────────────────
+  // When you add a package through /admin, you only need to give it ONE
+  // photo — the website automatically recognizes common destination names
+  // in the city field and adds 1-2 more photos of that same place, so the
+  // card still gets the rotating-photo effect without you hunting down
+  // extra images yourself. Add more destinations to this list any time;
+  // if a city isn't recognized, the card just shows your one photo (still
+  // works fine, just no bonus rotation until it's added here).
+  const DESTINATION_PHOTOS = {
+    'dubai': ['https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80', 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=500&q=80', 'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=500&q=80'],
+    'abu dhabi': ['https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?w=500&q=80', 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=500&q=80'],
+    'bali': ['https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80', 'https://images.unsplash.com/photo-1573790387438-4da905039392?w=500&q=80', 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=500&q=80'],
+    'thailand': ['https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80', 'https://images.unsplash.com/photo-1552550049-db097c9480d1?w=500&q=80', 'https://images.unsplash.com/photo-1528181304800-259b08848526?w=500&q=80'],
+    'bangkok': ['https://images.unsplash.com/photo-1552550049-db097c9480d1?w=500&q=80', 'https://images.unsplash.com/photo-1528181304800-259b08848526?w=500&q=80'],
+    'phuket': ['https://images.unsplash.com/photo-1589394915835-e0e9b9f2e6f4?w=500&q=80', 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80'],
+    'goa': ['https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&q=80', 'https://images.unsplash.com/photo-1587922546302-4d8b3c9e3639?w=500&q=80'],
+    'vietnam': ['https://images.unsplash.com/photo-1528127269322-539801943592?w=500&q=80', 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=500&q=80'],
+    'andaman': ['https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=500&q=80', 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=500&q=80'],
+    'switzerland': ['https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=500&q=80', 'https://images.unsplash.com/photo-1531210483974-4f8c42f33cf1?w=500&q=80'],
+    'singapore': ['https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=500&q=80', 'https://images.unsplash.com/photo-1565967511849-76a60a516170?w=500&q=80'],
+    'maldives': ['https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80', 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=500&q=80'],
+    'sri lanka': ['https://images.unsplash.com/photo-1586183189334-1a5d3e8c98d5?w=500&q=80', 'https://images.unsplash.com/photo-1546708973-b339540b5162?w=500&q=80'],
+    'manali': ['https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&q=80', 'https://images.unsplash.com/photo-1626016570893-e0e7a5d40a97?w=500&q=80'],
+    'kashmir': ['https://images.unsplash.com/photo-1566837497312-7be4ecc7db8a?w=500&q=80', 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&q=80'],
+    'kerala': ['https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80', 'https://images.unsplash.com/photo-1602301413775-0e7f0f6e6e0a?w=500&q=80'],
+    'jaipur': ['https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500&q=80', 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500&q=80'],
+    'london': ['https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&q=80', 'https://images.unsplash.com/photo-1520986606214-8b456906c813?w=500&q=80'],
+    'paris': ['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&q=80', 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80'],
+    'new york': ['https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500&q=80', 'https://images.unsplash.com/photo-1522083165195-3424ed129620?w=500&q=80'],
+    'toronto': ['https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=500&q=80'],
+    'sydney': ['https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=500&q=80', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80'],
+    'melbourne': ['https://images.unsplash.com/photo-1514395462725-fb4566210144?w=500&q=80'],
+    'kuala lumpur': ['https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=500&q=80'],
+    'mauritius': ['https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=500&q=80'],
+  };
+
+  // Finds a matching destination by checking if any known place name appears
+  // anywhere in the given city/route text (case-insensitive).
+  function findDestinationPhotos(text){
+    const lower = text.toLowerCase();
+    const key = Object.keys(DESTINATION_PHOTOS).find(k => lower.includes(k));
+    return key ? DESTINATION_PHOTOS[key] : null;
+  }
+
+  // Builds the final photo list for a card: the one photo you added via
+  // /admin always comes first, then auto-detected photos of that place
+  // fill in the rest (deduplicated, capped at 3 total).
+  function buildPhotoSet(mainPhoto, locationText){
+    const autoPhotos = findDestinationPhotos(locationText) || [];
+    const combined = [mainPhoto, ...autoPhotos];
+    return combined.filter((url, i) => combined.indexOf(url) === i).slice(0, 3);
+  }
+  // ──────────────────────────────────────────────────────────────────
+
+  function renderPackages(){
+    const grid = document.getElementById('packagesGrid');
+    if(!grid) return;
+    grid.innerHTML = PACKAGES.map(pkg => {
+      const photos = buildPhotoSet(pkg.img, pkg.city);
+      return `
+      <a class="dest-card" href="#" onclick="return notifyDest('${pkg.city.replace(/'/g,"\\'")}')">
+        ${pkg.isNew ? '<div class="ribbon">New This Week</div>' : ''}
+        <div class="img-stack">
+          ${photos.map((src, i) => `<img src="${src}" alt="${pkg.city}" class="${i === 0 ? 'active' : ''}">`).join('')}
+        </div>
+        <div class="overlay">
+          <div class="city">${pkg.city}</div>
+          <div class="price">${pkg.duration} from <b>₹${Number(pkg.price).toLocaleString('en-IN')}</b></div>
+        </div>
+      </a>
+    `;
+    }).join('');
+  }
+
+  // Rotates each package card through its photo set every 2 seconds.
+  // Cards that only ended up with one photo (unrecognized destination)
+  // just stay still — nothing breaks either way.
+  setInterval(() => {
+    document.querySelectorAll('#packagesGrid .img-stack').forEach(stack => {
+      const imgs = stack.querySelectorAll('img');
+      if(imgs.length < 2) return;
+      let activeIndex = 0;
+      imgs.forEach((img, i) => { if(img.classList.contains('active')) activeIndex = i; });
+      imgs[activeIndex].classList.remove('active');
+      imgs[(activeIndex + 1) % imgs.length].classList.add('active');
+    });
+  }, 2000);
+  // ──────────────────────────────────────────────────────────────────
+
+  // ── SPECIAL AIR TICKET FARES (homepage ticker) ──────────────────────
+  // The actual fare list lives in fares-data.json — edit it directly, or
+  // via the /admin login panel — instead of here. This just fetches it.
+  function renderFaresTicker(deals){
+    const ticker = document.getElementById('faresTicker');
+    if(!ticker || !deals) return;
+    const items = deals.map(deal =>
+      `<span>🔥 ${deal.route} <b>from ₹${Number(deal.price).toLocaleString('en-IN')}</b> — ${deal.period} Deal</span>`
+    ).join('');
+    // Duplicated once so the scroll loop is seamless (translateX -50% lines
+    // up exactly with the start of the second copy).
+    ticker.innerHTML = items + items;
+  }
+  let FARES_DATA = [];
+  fetch('fares-data.json?t=' + Date.now())
+    .then(res => res.json())
+    .then(data => { FARES_DATA = data.fares || []; renderFaresTicker(FARES_DATA); checkForNewOffers(); })
+    .catch(() => { /* If this fails, the ticker just stays empty. */ });
+  // ──────────────────────────────────────────────────────────────────
+
+  // ── "NEW OFFER" NOTIFICATION + NAV BADGES ───────────────────────────
+  // Runs after packages.json and/or fares-data.json load. Lights up a
+  // pulsing dot next to "Holiday Packages" / "Special Fares" in the nav
+  // if there's anything marked isNew in that list, and pops up a small
+  // card once per browser session pointing at the newest one overall.
+  function checkForNewOffers(){
+    const newPackages = PACKAGES.filter(p => p.isNew);
+    const newFares = FARES_DATA.filter(f => f.isNew);
+
+    document.getElementById('packagesNavDot').style.display = newPackages.length ? 'inline-block' : 'none';
+    document.getElementById('faresNavDot').style.display = newFares.length ? 'inline-block' : 'none';
+
+    if(sessionStorage.getItem('pasha_seen_new_offer')) return;
+    // Prefer a new package (it's the more visual/emotional sell); fall back to a fare.
+    const pick = newPackages[0] || newFares[0];
+    if(!pick) return;
+
+    const card = document.getElementById('newOfferCard');
+    const isPackage = !!pick.city;
+    document.getElementById('newOfferTitle').textContent = isPackage
+      ? pick.city + ' — ' + pick.duration
+      : pick.route;
+    document.getElementById('newOfferSub').textContent = 'From ₹' + Number(pick.price).toLocaleString('en-IN');
+    const link = document.getElementById('newOfferLink');
+    link.href = isPackage ? '#packages' : 'special-fares.html';
+
+    setTimeout(() => card.classList.add('show'), 3000);
+  }
+
+  function dismissNewOffer(){
+    document.getElementById('newOfferCard').classList.remove('show');
+    sessionStorage.setItem('pasha_seen_new_offer', '1');
+  }
+  // ──────────────────────────────────────────────────────────────────
+
+
+
+
+  function openVisaModal(){
+    document.getElementById('visaModal').classList.add('show');
+  }
+  function closeVisaModal(){
+    document.getElementById('visaModal').classList.remove('show');
+  }
+  document.getElementById('visaModal').addEventListener('click', (e)=>{
+    if(e.target.id === 'visaModal') closeVisaModal();
+  });
+
+  function encodeForm(data){
+    return Object.keys(data).map(k => encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&');
+  }
+
+  async function submitVisaForm(e){
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const payload = {
+      'form-name': 'visa-enquiry',
+      name: document.getElementById('visaName').value,
+      phone: document.getElementById('visaPhone').value,
+      visaType: document.getElementById('visaType').value,
+      message: document.getElementById('visaMessage').value,
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try{
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeForm(payload),
+      });
+      closeVisaModal();
+      showToast('Sent — our immigration desk will reach out at '+payload.phone+' soon.');
+      form.reset();
+    } catch(err){
+      showToast('Couldn\'t send just now. Try "Send via WhatsApp Instead" below, or check your connection.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send to Pasha Travels';
+    }
+  }
+
+  function sendViaWhatsApp(){
+    const name = document.getElementById('visaName').value || '(no name given)';
+    const phone = document.getElementById('visaPhone').value || '(no phone given)';
+    const visaType = document.getElementById('visaType').value;
+    const message = document.getElementById('visaMessage').value || '(no details given yet)';
+
+    const text = `Hi Pasha Travels, I'd like help with a visa case.\nName: ${name}\nPhone: ${phone}\nVisa type: ${visaType}\nIssue: ${message}`;
+    const url = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  }
+
+  // ── AIRPORT DATA & AUTOCOMPLETE ──────────────────────────────────
+  // Add more entries any time — each just needs a code, city, country,
+  // and optional aliases (other names/spellings people might type).
+  const AIRPORTS = [
+    { code:'DEL', city:'Delhi', country:'India', aliases:['new delhi','patiala','hoshiarpur','chandigarh area'] },
+    { code:'BOM', city:'Mumbai', country:'India', aliases:['bombay'] },
+    { code:'GOI', city:'Goa', country:'India', aliases:['dabolim'] },
+    { code:'BLR', city:'Bangalore', country:'India', aliases:['bengaluru'] },
+    { code:'MAA', city:'Chennai', country:'India', aliases:['madras'] },
+    { code:'CCU', city:'Kolkata', country:'India', aliases:['calcutta'] },
+    { code:'HYD', city:'Hyderabad', country:'India', aliases:[] },
+    { code:'PNQ', city:'Pune', country:'India', aliases:[] },
+    { code:'JAI', city:'Jaipur', country:'India', aliases:[] },
+    { code:'COK', city:'Kochi', country:'India', aliases:['cochin'] },
+    { code:'AMD', city:'Ahmedabad', country:'India', aliases:[] },
+    { code:'IXC', city:'Chandigarh', country:'India', aliases:[] },
+    { code:'ATQ', city:'Amritsar', country:'India', aliases:[] },
+    { code:'KUU', city:'Manali/Kullu', country:'India', aliases:['manali','kullu'] },
+    { code:'SXR', city:'Srinagar', country:'India', aliases:['kashmir'] },
+    { code:'IXJ', city:'Jammu', country:'India', aliases:[] },
+    { code:'IXA', city:'Agartala', country:'India', aliases:[] },
+    { code:'VNS', city:'Varanasi', country:'India', aliases:['banaras'] },
+    { code:'IXZ', city:'Port Blair', country:'India', aliases:['andaman'] },
+    { code:'DXB', city:'Dubai', country:'UAE', aliases:[] },
+    { code:'AUH', city:'Abu Dhabi', country:'UAE', aliases:[] },
+    { code:'SIN', city:'Singapore', country:'Singapore', aliases:[] },
+    { code:'BKK', city:'Bangkok', country:'Thailand', aliases:[] },
+    { code:'HKT', city:'Phuket', country:'Thailand', aliases:[] },
+    { code:'DPS', city:'Bali', country:'Indonesia', aliases:['denpasar'] },
+    { code:'LHR', city:'London', country:'UK', aliases:[] },
+    { code:'JFK', city:'New York', country:'USA', aliases:['nyc'] },
+    { code:'YYZ', city:'Toronto', country:'Canada', aliases:[] },
+    { code:'YVR', city:'Vancouver', country:'Canada', aliases:[] },
+    { code:'SYD', city:'Sydney', country:'Australia', aliases:[] },
+    { code:'MEL', city:'Melbourne', country:'Australia', aliases:[] },
+    { code:'ZRH', city:'Zurich', country:'Switzerland', aliases:[] },
+  ];
+
+  function searchAirports(query){
+    const q = query.trim().toLowerCase();
+    if(!q) return [];
+    // Exact code match always comes first
+    const exactCode = AIRPORTS.find(a => a.code.toLowerCase() === q);
+    const matches = AIRPORTS.filter(a =>
+      a.code.toLowerCase().includes(q) ||
+      a.city.toLowerCase().includes(q) ||
+      a.aliases.some(alias => alias.includes(q))
+    );
+    if(exactCode) matches.sort((a,b) => a.code === exactCode.code ? -1 : 0);
+    return matches.slice(0, 6);
+  }
+
+  function setupAutocomplete(inputId, dropdownId){
+    const input = document.getElementById(inputId);
+    const dropdown = document.getElementById(dropdownId);
+    if(!input || !dropdown) return;
+
+    input.addEventListener('input', () => {
+      input.dataset.code = ''; // typing invalidates any previously selected code
+      const results = searchAirports(input.value);
+      if(results.length === 0){
+        dropdown.innerHTML = input.value.trim() ? '<div class="no-match">No matching airport — try a city name or 3-letter code</div>' : '';
+        dropdown.classList.toggle('show', !!input.value.trim());
+        return;
+      }
+      dropdown.innerHTML = results.map(a => `
+        <div class="airport-option" data-code="${a.code}" data-city="${a.city.replace(/"/g,'&quot;')}">
+          <div><div class="city">${a.city}</div><div class="country">${a.country}</div></div>
+          <div class="code">${a.code}</div>
+        </div>
+      `).join('');
+      dropdown.classList.add('show');
+    });
+
+    dropdown.addEventListener('mousedown', (e) => {
+      const opt = e.target.closest('.airport-option');
+      if(!opt) return;
+      input.value = `${opt.dataset.city} (${opt.dataset.code})`;
+      input.dataset.code = opt.dataset.code;
+      dropdown.classList.remove('show');
+    });
+
+    input.addEventListener('blur', () => {
+      setTimeout(() => dropdown.classList.remove('show'), 150);
+    });
+    input.addEventListener('focus', () => {
+      if(input.value.trim()) input.dispatchEvent(new Event('input'));
+    });
+  }
+
+  setupAutocomplete('flightFrom', 'flightFromSuggest');
+  setupAutocomplete('flightTo', 'flightToSuggest');
+
+  // Resolves whatever's in the box to an IATA code: prefers the code stored
+  // when someone picked a dropdown suggestion, then falls back to parsing a
+  // typed 3-letter code, then a direct city/alias match.
+  function toIata(inputEl){
+    if(inputEl.dataset.code) return inputEl.dataset.code;
+    const trimmed = inputEl.value.trim();
+    const parenMatch = trimmed.match(/\(([A-Za-z]{3})\)\s*$/);
+    if(parenMatch) return parenMatch[1].toUpperCase();
+    if(/^[A-Za-z]{3}$/.test(trimmed)) return trimmed.toUpperCase();
+    const found = AIRPORTS.find(a =>
+      a.city.toLowerCase() === trimmed.toLowerCase() ||
+      a.aliases.includes(trimmed.toLowerCase())
+    );
+    return found ? found.code : null;
+  }
+  // ──────────────────────────────────────────────────────────────────
+
+  function handleSearch(e, type){
+    e.preventDefault();
+    if(type !== 'flight'){
+      showToast('Demo search: this is a design prototype, so live '+type+' results aren\'t connected to a real booking system yet. Ask me to wire this one up next.');
+      return false;
+    }
+    runFlightSearch(e.target);
+    return false;
+  }
+
+  async function runFlightSearch(form){
+    const resultsEl = document.getElementById('flightResults');
+    const layoutEl = document.getElementById('flightResultsLayout');
+    const submitBtn = form.querySelector('.search-submit');
+    const fromInput = document.getElementById('flightFrom');
+    const toInput = document.getElementById('flightTo');
+    const dateInput = document.getElementById('flightDepart');
+    const returnInput = document.getElementById('flightReturn');
+    const isRoundTrip = document.getElementById('returnDateField').style.display !== 'none';
+
+    // Show the results area + the "Special & Live Fares" contact card the
+    // moment someone clicks Search — regardless of what the search returns.
+    layoutEl.classList.add('show');
+    document.getElementById('flightContactCard').innerHTML = contactCardHTML(
+      'These search results are sample fares — call or WhatsApp us for today\'s real price and to book your seat.'
+    );
+
+    const originCode = toIata(fromInput);
+    const destCode = toIata(toInput);
+
+    if(!originCode || !destCode){
+      resultsEl.innerHTML = '<div class="results-error">Couldn\'t recognize one of those cities. Pick one from the suggestions as you type, or try a 3-letter airport code (e.g. DEL, BOM, GOI).</div>';
+      return;
+    }
+    if(!dateInput.value){
+      resultsEl.innerHTML = '<div class="results-error">Pick a departure date first.</div>';
+      return;
+    }
+    if(isRoundTrip && !returnInput.value){
+      resultsEl.innerHTML = '<div class="results-error">Pick a return date for your round trip.</div>';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Searching…';
+    resultsEl.innerHTML = '<div class="results-status">Checking live fares between '+originCode+' and '+destCode+'…</div>';
+
+    try{
+      let url = '/.netlify/functions/flight-search?origin='+originCode+'&destination='+destCode+'&date='+dateInput.value+'&adults=1';
+      if(isRoundTrip) url += '&returnDate='+returnInput.value;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if(data.error){
+        resultsEl.innerHTML = '<div class="results-error">'+data.error+'</div>';
+        return;
+      }
+      if(!data.offers || data.offers.length === 0){
+        resultsEl.innerHTML = '<div class="results-error">No flights found for that route/date — try a major route like DEL → BOM a few weeks out, or call/WhatsApp us and we\'ll check availability directly.</div>';
+        return;
+      }
+
+      resultsEl.innerHTML = '<div class="results-status">'+data.offers.length+' fares found — call or WhatsApp to confirm today\'s price and book your seat</div>'
+        + data.offers.map(renderFlightRow).join('');
+
+    } catch(err){
+      resultsEl.innerHTML = '<div class="results-error">Couldn\'t reach the flight search service. If this site is running locally (not deployed on Netlify), the API function won\'t exist yet — see the setup notes in the README.</div>';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Search Flights';
+    }
+  }
+
+  function renderFlightLeg(slice, label){
+    const seg = slice.segments;
+    const first = seg[0];
+    const last = seg[seg.length-1];
+    const stops = seg.length - 1;
+    const depTime = new Date(first.departing_at).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    const arrTime = new Date(last.arriving_at).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    const carrierCode = (first.marketing_carrier && first.marketing_carrier.iata_code) || '—';
+    const flightNum = first.marketing_carrier_flight_number || '';
+    return '<div class="leg">'
+      +   '<div class="carrier">'+carrierCode+'</div>'
+      +   '<div>' + (label ? '<div class="leg-label">'+label+'</div>' : '')
+      +   '<div class="route">'+first.origin.iata_code+' '+depTime+' → '+last.destination.iata_code+' '+arrTime+'</div>'
+      +   '<div class="meta">'+(stops === 0 ? 'Non-stop' : stops+' stop(s)')+' · Flight '+carrierCode+flightNum+'</div></div>'
+      + '</div>';
+  }
+
+  function renderFlightRow(offer){
+    const isRoundTrip = offer.slices.length > 1;
+    const legsHtml = isRoundTrip
+      ? renderFlightLeg(offer.slices[0], 'Outbound') + renderFlightLeg(offer.slices[1], 'Return')
+      : renderFlightLeg(offer.slices[0], null);
+
+    const totalPrice = Number(offer.total_amount).toLocaleString('en-IN');
+    const firstSeg = offer.slices[0].segments[0];
+    const lastSeg = offer.slices[0].segments[offer.slices[0].segments.length-1];
+    const routeSummary = firstSeg.origin.iata_code + ' → ' + lastSeg.destination.iata_code + (isRoundTrip ? ' (round trip)' : '');
+    const dateSummary = new Date(firstSeg.departing_at).toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+    const message = 'Hi Pasha Travels, I\'d like to book this fare:\n'
+      + routeSummary + '\nDeparture: ' + dateSummary + '\nPrice shown: ₹' + totalPrice
+      + '\n\nPlease confirm availability and help me complete the booking.';
+
+    return '<div class="flight-card">'
+      + '<div class="flight-row-top">'
+      +   '<div class="legs">' + legsHtml + '</div>'
+      +   '<div class="price">₹'+totalPrice+'<span>total, per traveller</span></div>'
+      + '</div>'
+      + '<div class="flight-row-actions">'
+      +   '<a class="book-btn call" href="tel:+919814145209">📞 Call to Book</a>'
+      +   '<button type="button" class="book-btn whatsapp" data-message="'+encodeURIComponent(message)+'" onclick="openFlightWhatsApp(this)">💬 WhatsApp to Book</button>'
+      + '</div>'
+      + '</div>';
+  }
+
+  function openFlightWhatsApp(btn){
+    const message = decodeURIComponent(btn.dataset.message);
+    window.open('https://wa.me/'+TRAVEL_WHATSAPP_NUMBER+'?text='+encodeURIComponent(message), '_blank');
+  }
+
+
+  function handleSubscribe(e){
+    e.preventDefault();
+    showToast('Thanks — you\'re on the list for fare drops (demo only, no email actually sent).');
+    e.target.reset();
+    return false;
+  }
+
+  function notifyDest(name){
+    const card = document.getElementById('packageContactCard');
+    if(card){
+      card.innerHTML = contactCardHTML(
+        'Ready to book ' + name + '? Call or WhatsApp us to confirm today\'s price and lock in your seats.'
+      );
+      card.classList.add('show');
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      showToast(name+': contact us to book this package.');
+    }
+    return false;
+  }
+  function notifyGeneric(){
+    showToast('This page is part of the demo — add real content here when you go live.');
+    return false;
+  }
+</script>
+
+</body>
+</html>
