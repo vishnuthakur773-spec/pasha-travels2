@@ -570,17 +570,32 @@
       if(adminFab) adminFab.style.display = 'none';
     }
   }
+async function gatewayGetFile(path){
+  const res = await fetch(
+    'https://api.github.com/repos/vishnuthakur773-spec/pasha-travels2/contents/' +
+    path + '?ref=' + ADMIN_BRANCH
+  );
 
-  async function gatewayGetFile(path){
-    const token = await currentAdminUser.jwt();
-    const res = await fetch(GATEWAY_API + path + '?ref=' + ADMIN_BRANCH, {
-      headers: { Authorization: 'Bearer ' + token },
-    });
-    if(!res.ok) throw new Error('Could not load ' + path + ' (status ' + res.status + ')');
-    const data = await res.json();
-    return { content: JSON.parse(base64ToUtf8(data.content)), sha: data.sha };
+  if(!res.ok){
+    throw new Error('Could not load ' + path + ' (status ' + res.status + ')');
   }
 
+  const data = await res.json();
+
+  const binary = atob(data.content.replace(/\s/g, ''));
+  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+  const content = new TextDecoder().decode(bytes);
+
+  return {
+    content: content,
+    sha: data.sha
+  };
+}
+  return {
+    content: data,
+    sha: null
+  };
+}
   async function gatewayPutFile(path, jsonObj, sha, message){
     const token = await currentAdminUser.jwt();
     const res = await fetch(GATEWAY_API + path, {
