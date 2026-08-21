@@ -1,8 +1,32 @@
 {
   "fares": [
-    { "route": "Delhi → Dubai", "price": 8999, "period": "Daily", "img": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80", "isNew": false },
-    { "route": "Amritsar → London", "price": 34999, "period": "Weekly", "img": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&q=80", "isNew": true },
-    { "route": "Delhi → Bangkok", "price": 11999, "period": "Monthly", "img": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80", "isNew": false },
-    { "route": "Chandigarh → Mumbai", "price": 3499, "period": "Daily", "img": "https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=500&q=80", "isNew": false }
+    {
+      "route": "Delhi → Dubai",
+      "price": 8999,
+      "period": "Daily",
+      "img": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80",
+      "isNew": false
+    },
+    {
+      "route": "Canada",
+      "price": 73500,
+      "period": "Weekly",
+      "img": "/images/uploads/1787293295203-canada-fares.jpg",
+      "isNew": true
+    },
+    {
+      "route": "Delhi → Bangkok",
+      "price": 11999,
+      "period": "Monthly",
+      "img": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80",
+      "isNew": false
+    },
+    {
+      "route": "Chandigarh → Mumbai",
+      "price": 3499,
+      "period": "Daily",
+      "img": "https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=500&q=80",
+      "isNew": false
+    }
   ]
 }
